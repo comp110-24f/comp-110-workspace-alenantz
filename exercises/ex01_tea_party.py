@@ -1,6 +1,6 @@
 """Plan a Tea Party"""
 
-_author_: str = 730573848
+__author__: str = "730573848"
 
 
 def main_planner(guests: int) -> None:
@@ -8,27 +8,26 @@ def main_planner(guests: int) -> None:
     print(f"A Cozy Tea Party for {guests} People!")
 
     """Calculate the number of tea bags needed"""
-    num_tea_bags = tea_bags(guests)
-    print((f"Tea Bags: {num_tea_bags}"))
+
+    print((f"Tea Bags: {tea_bags(guests)}"))
 
     """Calculate the number of treats needed"""
-    num_treats = treats(guests)
-    print((f"Treats: {num_treats}"))
+
+    print((f"Treats: {treats(guests)}"))
 
     """Calculate the total cost"""
-    total_cost = cost(tea_count=num_tea_bags, treat_count=num_treats)  # type: ignore
-    print((f"Cost: ${total_cost: .2f}"))
+    print(f"Cost: ${cost(tea_bags(guests), treats(guests))}")
 
 
 # main_planner function to string all the below functions together and calculate based on the number of guests I input.
 # had to use the f and {} to signify my previous function values to run in my main planner as a single function.
 # used the print function to report the title of the values Im using my functions to calculate.
+# I implemented all of the variables i needed and just assigned my number of guests to each to report the correct value.
 
 
 def tea_bags(people: int) -> int:
     """Calculates the number of teabags per guest"""
-    tea_bags = people * 2
-    return int(tea_bags)
+    return people * 2
 
 
 # had to calculate the number of tea bags per person by accounting that each person would want 2 teabags.
@@ -36,9 +35,7 @@ def tea_bags(people: int) -> int:
 
 def treats(people: int) -> int:
     """Computing the number of treats needed"""
-    num_tea_bags = tea_bags(people=people)
-    num_treats = num_tea_bags * 1.5
-    return int(num_treats)
+    return int(tea_bags(people=people) * 1.5)
 
 
 # had to add the connection of tea_bags to the new treats function. Because people was the recorded value i had to use that to collect into one value.
@@ -46,10 +43,7 @@ def treats(people: int) -> int:
 
 def cost(tea_count: int, treat_count: int) -> float:
     """Computing the cost of teabags and treats combined"""
-    tea_cost = tea_count * 0.50
-    treat_cost = treat_count * 0.75
-    total_cost = tea_cost + treat_cost
-    return total_cost
+    return tea_count * 0.50 + treat_count * 0.75
 
 
 # had to name the values of tea and treats to allow the calculation of the number of treats and tea bags into one value.
