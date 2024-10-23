@@ -3,41 +3,42 @@
 __author__: str = "730573848"
 
 
-def only_evens(xs: list[int]) -> list[int]:
-    """Retuen a list containing only the even integers from the input list."""
-    result: list[int] = []
-    for x in xs:
-        if x % 2 == 0
-            result.append(x)
+def only_evens(input_list: list[int]) -> list[int]:
+    """Return a list containing only the even elements from the input list."""
+    result = []
+    for num in input_list:
+        if num % 2 == 0:
+            result.append(num)
     return result
 
-def sub(xs: list[int], start: int, end: int) -> list[int]:
-    """Return a list which is a subset of the input list between start and end - 1."""
-    result: list[int] = []
-    
-    # Handle out-of-bound indices
+
+def sub(input_list: list[int], start: int, end: int) -> list[int]:
+    """Return a list which is a subset of the input list, between start index and end index-1."""
+    result = []
+    if len(input_list) == 0 or start >= len(input_list) or end <= 0:
+        return result
+
     if start < 0:
         start = 0
-    if end > len(xs):
-        end = len(xs)
-    
-    # Return an empty list if start is greater than the length or end is <= 0
-    if len(xs) == 0 or start >= len(xs) or end <= 0:
-        return result
-    
-    for i in range(start, end):
-        result.append(xs[i])
-    
+    if end > len(input_list):
+        end = len(input_list)
+
+    i = start
+    while i < end:
+        result.append(input_list[i])
+        i += 1
+
     return result
 
-def add_at_index(xs: list[int], value: int, index: int) -> None:
-    """Modify the input list by adding a value at the specified index."""
-    if index < 0 or index > len(xs):
+
+def add_at_index(input_list: list[int], element: int, index: int) -> None:
+    """Insert an element at the specified index in the input list."""
+    if index < 0 or index > len(input_list):
         raise IndexError("Index is out of bounds for the input list")
-    
-    # Shift elements to the right to make space for the new value
-    xs.append(0)  # Temporary element at the end to make space
-    for i in range(len(xs) - 1, index, -1):
-        xs[i] = xs[i - 1]  # Shift elements to the right
-    
-    xs[index] = value
+
+    input_list.append(0)  # Add space at the end of the list
+    i = len(input_list) - 1
+    while i > index:
+        input_list[i] = input_list[i - 1]
+        i -= 1
+    input_list[index] = element
