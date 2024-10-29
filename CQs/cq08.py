@@ -1,3 +1,6 @@
+
+
+
 def find_eligible(names: list[str], ages: list[int]) -> dict[str, int]:
   """Find the names and ages of all people old enough to rent a car!"""
    if len(names) != len(ages):
