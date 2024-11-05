@@ -1,6 +1,9 @@
 __author__: str = "730573848"
 
 
+from typing import Dict, List
+
+
 def invert(input_dict: dict[str, str]) -> dict[str, str]:
     """
     Inverts the keys and values of the input dictionary.
@@ -32,7 +35,7 @@ def favorite_color(color_dict: dict[str, str]) -> str:
     Returns:
     str: The most popular color. If there's a tie, the first color in the dictionary wins.
     """
-    color_count = {}
+    color_count: Dict[str, int] = {}
     for name, color in color_dict.items():
         if color in color_count:
             color_count[color] += 1
@@ -64,7 +67,7 @@ def count(input_list: list[str]) -> dict[str, int]:
     Returns:
     dict[str, int]: A dictionary where keys are items from the list and values are their counts.
     """
-    count_dict = {}
+    count_dict: Dict[str, int] = {}
     for item in input_list:
         if item in count_dict:
             count_dict[item] += 1
@@ -83,7 +86,7 @@ def alphabetizer(word_list: list[str]) -> dict[str, list[str]]:
     Returns:
     dict[str, list[str]]: A dictionary where each key is a letter and each value is a list of words starting with that letter.
     """
-    alphabet_dict = {}
+    alphabet_dict: Dict[str, List[str]] = {}
     for word in word_list:
         initial = word[0].lower()
         if initial in alphabet_dict:
@@ -108,6 +111,7 @@ def update_attendance(
     None
     """
     if day in attendance_dict:
-        attendance_dict[day].append(student)
+        if student not in attendance_dict[day]:
+            attendance_dict[day].append(student)
     else:
         attendance_dict[day] = [student]
